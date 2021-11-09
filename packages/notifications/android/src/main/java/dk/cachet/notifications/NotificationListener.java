@@ -23,7 +23,7 @@ public class NotificationListener extends NotificationListenerService {
 
   @RequiresApi(api = VERSION_CODES.KITKAT)
   @Override
-  public void onNotificationPosted(@NonNull StatusBarNotification notification) {
+  public void onNotificationPosted(StatusBarNotification notification) {
     // Retrieve package name to set as title.
     String packageName = notification.getPackageName();
     // Retrieve extra object from notification to extract payload.
