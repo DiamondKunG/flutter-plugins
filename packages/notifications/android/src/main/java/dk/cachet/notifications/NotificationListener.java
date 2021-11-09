@@ -23,7 +23,7 @@ public class NotificationListener extends NotificationListenerService {
 
   @RequiresApi(api = VERSION_CODES.KITKAT)
   @Override
-  public void onNotificationPosted(StatusBarNotification notification) {
+  public void onNotificationPosted(@NonNull StatusBarNotification notification) {
     // Retrieve package name to set as title.
     String packageName = notification.getPackageName();
     // Retrieve extra object from notification to extract payload.
@@ -37,7 +37,7 @@ public class NotificationListener extends NotificationListenerService {
       CharSequence title = extras.getCharSequence(Notification.EXTRA_TITLE);
       CharSequence text = extras.getCharSequence(Notification.EXTRA_TEXT);
 
-      intent.putExtra(NOTIFICATION_TITLE, title.toString());
+      intent.putExtra(NOTIFICATION_TITLE, (title.toString() != null) ? title.toString() + "" : "null");
       intent.putExtra(NOTIFICATION_MESSAGE, text.toString());
     }
     sendBroadcast(intent);
